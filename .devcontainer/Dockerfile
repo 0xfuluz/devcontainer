@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
@@ -6,9 +6,6 @@ ARG USER_GID=$USER_UID
 
 
 # Install Fish shell
-RUN echo "deb http://ppa.launchpad.net/fish-shell/release-3/ubuntu jammy main"\
-| tee /etc/apt/sources.list.d/fish-shell.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 27557F056DC33CA5
 RUN apt-get update && apt-get install -y fish
 
 # Install Python, Go, and other dependencies
